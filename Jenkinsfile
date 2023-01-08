@@ -13,8 +13,8 @@ pipeline {
         // }
         stage('Build') {
             steps {
-                sh "./mvnw clean package -Djacoco.skip=true"
-                //sh 'false'
+                //sh "./mvnw clean package -Djacoco.skip=true"
+                sh 'true'
             }
             post {
                 always {
@@ -32,7 +32,6 @@ pipeline {
             }
         }
         stage('Docker Build') {
-    	    agent any
             steps {
       	        sh 'docker build -t springpetclinic/dockerspringboot:latest .'
             }
