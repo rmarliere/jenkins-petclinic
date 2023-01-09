@@ -41,14 +41,16 @@ pipeline {
         stage('Docker Build') {
             steps {
                 script {
-                    dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+                    def dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
                 }
       	        //sh 'docker build -t springpetclinic/dockerspringboot:latest .'
             }
         }
         stage('Push to ECR') {
-            docker.withRegistry("775591165938.dkr.ecr.us-east-1.amazonaws.com/jenkins", "ecr:us-east-1:awskeys") {
-                docker.image(dockerImage).push()
+            script {
+                docker.withRegistry("775591165938.dkr.ecr.us-east-1.amazonaws.com/jenkins", "ecr:us-east-1:awskeys") {
+                    docker.image(dockerImage).push()
+                }
             }
         }
     }
