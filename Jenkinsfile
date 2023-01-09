@@ -7,9 +7,9 @@ pipeline {
         IMAGE_TAG="v1"
         REPOSITORY_URI = "22222222222.dkr.ecr.us-east-1.amazonaws.com/jenkins-pipeline"
     }
-    triggers {
-        pollSCM('* * * * *')
-    }
+    // triggers {
+    //     pollSCM('* * * * *')
+    // }
 
     stages {
         // stage('Checkout') {
@@ -38,17 +38,20 @@ pipeline {
                 }
             }
         }
-        stage('Docker Build') {
+        stage('Docker Build and Push') {
             steps {
                 script {
-                    def dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+                    docker.withRegistry("775591165938.dkr.ecr.us-east-1.amazonaws.com/jenkins", "ecr:us-east-1:awskeys") {
+                        def dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+                        dockerImage.push()
+                    }
                 }
       	        //sh 'docker build -t springpetclinic/dockerspringboot:latest .'
             }
         }
         // stage('Push to ECR') {
         //     script {
-        //         docker.withRegistry("775591165938.dkr.ecr.us-east-1.amazonaws.com/jenkins", "ecr:us-east-1:awskeys") {
+                // docker.withRegistry("775591165938.dkr.ecr.us-east-1.amazonaws.com/jenkins", "ecr:us-east-1:awskeys") {
         //             docker.image(dockerImage).push()
         //         }
         //     }
