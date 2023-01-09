@@ -13,10 +13,10 @@ spec:
     spec:
       containers:
       - name: springpet
-        image: '775591165938.dkr.ecr.us-east-1.amazonaws.com/springpetclinic:v1'
+        image: '775591165938.dkr.ecr.us-east-1.amazonaws.com/springpetclinic:latest'
         resources:
           limits:
-            memory: "128Mi"
+            memory: "256Mi"
             cpu: "500m"
         ports:
-        - containerPort: 3000
+        - containerPort: 8080
