@@ -3,7 +3,7 @@ pipeline {
     environment {
         IMAGE_REPO_NAME="springpetclinic"
         IMAGE_TAG="latest"
-        REPOSITORY_URI = "https://775591165938.dkr.ecr.us-east-1.amazonaws.com"
+        REPOSITORY_URI = "https://322676149291.dkr.ecr.us-east-1.amazonaws.com"
     }
     // triggers {
     //     pollSCM('* * * * *')
