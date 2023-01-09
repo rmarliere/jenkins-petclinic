@@ -20,7 +20,7 @@ pipeline {
                 always {
                     junit 'target/surefire-reports/*.xml'
                     archiveArtifacts 'target/*.jar'
-                }
+                //}
                 // changed {
                     emailext subject: "Job \'${JOB_NAME}\' (build ${BUILD_NUMBER}) ${currentBuild.result}", 
                         body: "Please go ${BUILD_URL} and verify the build", 
@@ -28,7 +28,7 @@ pipeline {
                         compressLog: true,
                         to: "test@jenkins", 
                         recipientProviders: [requestor(), upstreamDevelopers()] 
-                // }
+                 }
             }
         }
         stage('Docker Build') {
