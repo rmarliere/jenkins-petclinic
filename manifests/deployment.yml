@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springpet
+spec:
+  selector:
+    matchLabels:
+      app: springpet
+  template:
+    metadata:
+      labels:
+        app: springpet
+    spec:
+      containers:
+      - name: springpet
+        image: '775591165938.dkr.ecr.us-east-1.amazonaws.com/springpetclinic:v1'
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000

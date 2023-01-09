@@ -46,15 +46,12 @@ pipeline {
                         dockerImage.push()
                     }
                 }
-      	        //sh 'docker build -t springpetclinic/dockerspringboot:latest .'
             }
         }
-        // stage('Push to ECR') {
-        //     script {
-                // docker.withRegistry("775591165938.dkr.ecr.us-east-1.amazonaws.com/jenkins", "ecr:us-east-1:awskeys") {
-        //             docker.image(dockerImage).push()
-        //         }
-        //     }
-        // }
+        stage('Deploy'){
+            steps {
+                sh 'kubectl apply -f manifests/deployment.yml'
+            }
+        }
     }
 }
