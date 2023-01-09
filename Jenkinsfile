@@ -22,12 +22,12 @@ pipeline {
                     archiveArtifacts 'target/*.jar'
                 }
                 // changed {
-                //     emailext subject: "Job \'${JOB_NAME}\' (build ${BUILD_NUMBER}) ${currentBuild.result}", 
-                //         body: "Please go ${BUILD_URL} and verify the build", 
-                //         attachLog: true, 
-                //         compressLog: true,
-                //         to: "test@jenkins", 
-                //         recipientProviders: [requestor(), upstreamDevelopers()] 
+                    emailext subject: "Job \'${JOB_NAME}\' (build ${BUILD_NUMBER}) ${currentBuild.result}", 
+                        body: "Please go ${BUILD_URL} and verify the build", 
+                        attachLog: true, 
+                        compressLog: true,
+                        to: "test@jenkins", 
+                        recipientProviders: [requestor(), upstreamDevelopers()] 
                 // }
             }
         }
