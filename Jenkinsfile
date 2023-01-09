@@ -41,7 +41,7 @@ pipeline {
         stage('Docker Build and Push') {
             steps {
                 script {
-                    docker.withRegistry("775591165938.dkr.ecr.us-east-1.amazonaws.com/jenkins", "ecr:us-east-1:awskeys") {
+                    docker.withRegistry("https://775591165938.dkr.ecr.us-east-1.amazonaws.com/jenkins", "ecr:us-east-1:awskeys") {
                         def dockerImage = docker.build "${IMAGE_REPO_NAME}:${IMAGE_TAG}"
                         dockerImage.push()
                     }
