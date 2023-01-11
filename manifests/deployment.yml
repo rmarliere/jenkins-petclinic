@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: springpet
-        image: '322676149291.dkr.ecr.us-east-1.amazonaws.com/springpetclinic:latest'
+        image: '258076216385.dkr.ecr.us-east-1.amazonaws.com/springpetclinic:latest'
         resources:
           limits:
             memory: "256Mi"
